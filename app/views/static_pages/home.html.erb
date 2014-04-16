@@ -1,13 +1,71 @@
-<% provide(:title, 'Home') %>
+<% if signed_in? %>
+  <div class="row">
+<%= text_area_tag(:message, "Hi, nice site", size: "24x6") %>
 
-<div class="center hero-unit">
-  <h1>Welcome to the Sample App</h1>
-  <h2>
-    This is the home page for the
-    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </h2>
-  <%= link_to "Sign up now!", 'signup', class: "btn btn-large btn-primary" %>
+<%= password_field_tag(:password) %>
+
+<%= hidden_field_tag(:parent_id, "5") %>
+
+<%= search_field(:user, :name) %>
+
+<%= telephone_field(:user, :phone) %>
+
+<%= date_field(:user, :born_on) %>
+
+<%= datetime_field(:user, :meeting_time) %>
+
+<%= datetime_local_field(:user, :graduation_day) %>
+
+<%= month_field(:user, :birthday_month) %>
+
+<%= week_field(:user, :birthday_week) %>
+
+<%= url_field(:user, :homepage) %>
+
+<%= email_field(:user, :address) %>
+
+<%= color_field(:user, :favorite_color) %>
+
+<%= time_field(:task, :started_at) %>
+
+<%= number_field(:product, :price, in: 1.0..20.0, step: 0.5) %>
+
+<%= range_field(:product, :discount, in: 1..100) %>	
+  </div>
+
+<div class="row">
+<select name="city_id" id="city_id">
+
+  <option value="1">Lisbon</option>
+
+  <option value="2">Madrid</option>
+
+  ...
+
+  <option value="12">Berlin</option>
+
+</select>
+<%= radio_button_tag(:age, "child") %>
+
+<%= label_tag(:age_child, "I am younger than 21") %>
+
+<%= radio_button_tag(:age, "adult") %>
+
+<%= label_tag(:age_adult, "I'm over 21") %>
 </div>
 
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<% else %>
+
+  <div class="center hero-unit">
+    <h1>Welcome to the Sample App</h1> 
+    <h2> 
+      This is the home page for the
+      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+      sample application.
+    </h2>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  </div>
+
+  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+
+<% end %>
