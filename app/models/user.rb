@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :travelposts, dependent: :destroy
 	has_many :microposts, dependent: :destroy
 	before_save { self.email = email.downcase }
 
@@ -19,7 +20,8 @@ class User < ActiveRecord::Base
 
   def feed
     # This is preliminary. See "Following users" for the full implementation.
-    Micropost.where("user_id = ?", id)
+    #Micropost.where("user_id = ?", id)
+    Travelpost.where("user_id = ?", id)
   end
 
 private

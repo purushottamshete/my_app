@@ -4,7 +4,14 @@
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>
 
-  <span class="content"><%= feed_item.content %></span>
+  <span class="content">
+	<b>From:</b> <%= Travelpost.find_by(id: feed_item.from_city_id).city.name %>
+	<b>To:</b> <%= Travelpost.find_by(id: feed_item.to_city_id).city.name %>
+	Date: <%= feed_item.travel_date %>
+	Time: <%= feed_item.travel_time %>
+	Seats Available: <%= feed_item.seats_available %>
+	Fuel Share: <%= feed_item.fuel_share %>
+  </span>
 
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.

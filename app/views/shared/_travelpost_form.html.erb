@@ -1,0 +1,19 @@
+<%= form_for(@travelpost) do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+	<%= f.label :from_city_id, "From " %>
+	<%= f.collection_select :from_city_id, City.all, :id, :name %>
+	<%= f.label :to_city_id, "To " %>
+	<%= f.collection_select :to_city_id, City.all, :id, :name %>
+	<%= f.label :travel_date, "Date " %>
+	<%= f.date_select :travel_date , start_year: 2014%>
+	<%= f.label :travel_time, "Time " %>
+	<%= f.time_select :travel_time %>
+	<%= f.label :seats_available, "Seats " %>
+	<%= f.number_field :seats_available %>
+	<%= f.label :fuel_share, "Fuel Share (Rs.) " %>
+	<%= f.text_field :fuel_share %>
+  <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+
+<% end %>

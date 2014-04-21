@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413103828) do
+ActiveRecord::Schema.define(version: 20140419120633) do
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -21,6 +34,18 @@ ActiveRecord::Schema.define(version: 20140413103828) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+
+  create_table "travelposts", force: true do |t|
+    t.integer  "from_city_id"
+    t.integer  "to_city_id"
+    t.date     "travel_date"
+    t.time     "travel_time"
+    t.integer  "seats_available"
+    t.float    "fuel_share"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -33,5 +58,22 @@ ActiveRecord::Schema.define(version: 20140413103828) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+
+  create_table "v_models", force: true do |t|
+    t.string   "name"
+    t.float    "engine_cc"
+    t.integer  "seat_capacity"
+    t.string   "fuel_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "vehicles", force: true do |t|
+    t.integer  "vmodel_id"
+    t.string   "registration_no"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
