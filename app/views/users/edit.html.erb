@@ -1,0 +1,17 @@
+<h1> Edit </h1>
+<div class="row">
+<div class="span8">
+<%= form_for @user do |user_form| %>
+	<%= user_form.text_field :fname %>
+	<%= user_form.text_field :lname %>
+	<%= user_form.text_field :email %>
+	<%= fields_for :detail do |detail_form| %>
+		<%= detail_form.text_field :corp_email %>
+		<%= detail_form.text_field :mobile %>
+		<%= detail_form.collection_select :city_id, City.all, :id, :name %>
+
+	<%= user_form.submit "Update" %>
+	<%end%>
+</div>
+</div>
+<% end %>

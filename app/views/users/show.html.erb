@@ -2,7 +2,8 @@
 <div class="row">
   <h1> My Profile </h1>
   <aside>
-	<%= link_to 'Edit', '#' %>
+	<%= link_to 'Edit', '/edit' %>
+	<%= link_to 'Change Password', "/cpwd" %>
   </aside>
 
   <aside>
@@ -10,9 +11,9 @@
   </aside>
   <aside>
 	<% if @detail.blank? %>
-		<%= render 'details/detail_form' %>
+		<h1> details is balck </h1>	
 	<% else %>
-		<%= render @detail %>
+		<h1> details is not balck </h1>	
 	<% end %>
   </aside>
 </div>

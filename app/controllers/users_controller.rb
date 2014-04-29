@@ -1,13 +1,40 @@
 class UsersController < ApplicationController
 	
   def show
-	@user = User.find(params[:id])
-	@microposts = @user.microposts.paginate(page: params[:page], limit: 4)
-	if @user.detail 
-		@detail = @user.detail
+	if signed_in?
+		@user = User.find(params[:id])
+		if @user.detail 
+			@detail = @user.detail
+		else
+			@detail = Detail.new
+		end
+	
 	else
-		@detail = Detail.new
+		flash[:error]  = "Please sign in"
+		redirect_to '/'
 	end
+  end
+
+  def edit
+	if signed_in?
+		@user = current_user
+		@details = Detail.new
+	else
+		flash[:error]  = "Please sign in"
+		redirect_to '/'
+	end	
+  end
+	
+  def update
+  end
+
+  def change_password
+	if signed_in?
+		@user = current_user
+	else
+		flash[:error]  = "Please sign in"
+		redirect_to '/'
+	end	
   end
 
   def new

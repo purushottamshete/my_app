@@ -9,8 +9,14 @@ def create
 
       # Sign the user in and redirect to the user's show page.
 	signin user
-	flash[:success] = "Welcome to the Sample App!"
-      	redirect_to user
+
+	if current_user.detail.blank? 
+		flash[:error] = "details are blank edit the content" 
+		redirect_to '/edit'
+	else
+		flash[:success] = "Welcome to the Sample App!"
+	      	redirect_to user
+	end
 
     else
 
@@ -19,6 +25,7 @@ def create
       render 'new'
 
     end
+
 end
 	def destroy
 		signout

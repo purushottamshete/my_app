@@ -1,5 +1,5 @@
 <% unless @detail.blank? %>
 <li> Corporate E-mail: <%= @detail.corp_email %> </li>
 <li> Mobile: <%= @detail.mobile %> </li>
-<li> City: <%= current_city %> </li>
+<li> City: <%= @detail.city.name %> </li>
 <%end%>

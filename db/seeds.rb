@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-User.create(fname: "Umesh", lname: "Shete", email: "umesh@gmail.com", have_a_car: true)
+User.create(fname: "Purushottam", lname: "Shete", email: "purushottamshete@gmail.com", have_a_car: true, password: "143Love*", password_confirmation: "143Love*")
 City.create(name: "Pune", country_id: 1)
 City.create(name: "Mumbai", country_id: 1)
 City.create(name: "Nashik", country_id: 1)
