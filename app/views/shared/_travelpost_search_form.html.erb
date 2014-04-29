@@ -1,0 +1,11 @@
+<%= form_for(:travelpost, url: search_path) do |f| %>
+	<%= f.label :from_city_id, "From " %>
+	<%= f.collection_select :from_city_id, City.all, :id, :name %>
+	<%= f.label :to_city_id, "To " %>
+	<%= f.collection_select :to_city_id, City.all, :id, :name %>
+	<%= f.label :travel_date, "Date " %>
+	<%= f.date_select :travel_date , start_year: 2014%>
+  <%= f.submit "Search...", class: "btn btn-large btn-primary" %>
+
+
+<% end %>

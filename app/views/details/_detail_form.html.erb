@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="span6 offset3">
+<h1> details form </h1>
+<%= form_for(@detail) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+	
+   	<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+ </div>
+</div>
+
+

@@ -3,6 +3,7 @@ MyApp::Application.routes.draw do
 	resources :sessions, only: [:new, :create, :destroy]
 	resources :microposts, only: [:create, :destroy]
 	resources :travelposts, only: [:create, :destory]
+	resources :details, only: [:create, :update]
   #get "static_pages/home"
 	
   #get "static_pages/help"
@@ -14,6 +15,10 @@ MyApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/create', to: 'static_pages#travel_create', via: 'get'
+  match '/searchg', to: 'static_pages#travel_search', via: 'get'
+  match '/search', to: 'static_pages#travel_search', via: 'post'
+  match '/search_result', to: 'static_pages#travel_search_result', via: 'post'
 
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'

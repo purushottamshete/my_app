@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   def show
 	@user = User.find(params[:id])
 	@microposts = @user.microposts.paginate(page: params[:page], limit: 4)
+	if @user.detail 
+		@detail = @user.detail
+	else
+		@detail = Detail.new
+	end
   end
 
   def new
@@ -19,16 +24,10 @@ class UsersController < ApplicationController
 		end
 	end
 
-	private
-
-
+private
 
     def user_params
-
-      params.require(:user).permit(:name, :email, :password,
-
-                                   :password_confirmation)
-
+      params.require(:user).permit(:fname,:lname,:have_a_car, :email, :password, :password_confirmation)
     end
 
 end

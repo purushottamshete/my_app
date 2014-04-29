@@ -1,45 +1,30 @@
 <% provide(:title, 'Sign up') %>
-
 <h1>Sign up</h1>
-
-
-
 <div class="row">
-
   <div class="span6 offset3">
-
     <%= form_for(@user) do |f| %>
-
 	<%= render 'shared/error_messages', object: f.object %>
+      <%= f.text_field :fname, value: "First Name", 
+		onfocus: "if(this.value == 'First Name') { this.value = '' }", onblur: "if(this.value == '') { this.value = 'First Name'; }" %>
+      <%= f.text_field :lname, value: "Last Name", 
+		onfocus: "if(this.value == 'Last Name') { this.value = '' }", onblur: "if(this.value == '') { this.value = 'Last Name'; }" %>
+      <%= f.text_field :email, value: "E-mail", 
+		onfocus: "if(this.value == 'E-mail') { this.value = '' }", onblur: "if(this.value == '') { this.value = 'E-mail'; }" %>
+      <%= f.text_field :password, value: 'Password', 
+		onfocus: "if(this.value == 'Password') { this.value = ''; this.type = 'password' }", onblur: "if(this.value == '') { this.type= 'text'; this.value = 'Password'; }" %>
+      <%= f.text_field :password_confirmation, value: 'Re-Enter Password', 
+		onfocus: "if(this.value == 'Re-Enter Password') { this.value = ''; this.type = 'password' }", onblur: "if(this.value == '') { this.type= 'text'; this.value = 'Re-Enter Password'; }" %>
 
-      <%= f.label :name %>
-
-      <%= f.text_field :name %>
-
-
-
-      <%= f.label :email %>
-
-      <%= f.text_field :email %>
-
-
-
-      <%= f.label :password %>
-
-      <%= f.password_field :password %>
-
-
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-
-      <%= f.password_field :password_confirmation %>
-
-
+	<div >
+	<table>
+	<td> Have a car </td>
+	<td> <%= f.radio_button :have_a_car , true %> </td>
+	<td> Dont Have a car </td>
+	<td><%= f.radio_button :have_a_car , false %></td>
+	<table>
+	</div>
 
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-
     <% end %>
-
   </div>
-
 </div>

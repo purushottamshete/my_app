@@ -1,12 +1,15 @@
 class User < ActiveRecord::Base
 	has_many :travelposts, dependent: :destroy
 	has_many :microposts, dependent: :destroy
+	has_one :detail
 	before_save { self.email = email.downcase }
 
-	validates :name, presence: true, length: {maximum: 30}
+	validates :fname, presence: true, length: {maximum: 30}
+	validates :lname, presence: true, length: {maximum: 30}
+	validates :have_a_car, presence: true
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX } , uniqueness: { case_sensitive: false }
-  	validates :password, length: { minimum: 6 }
+	
 
 	has_secure_password
 

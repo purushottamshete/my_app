@@ -1,0 +1,10 @@
+<% provide(:title, 'Search') %>
+<% if signed_in? %>
+<h1>Search Travel</h1>
+<p>
+	<%= render 'shared/travelpost_search_form' %>
+	<% if @feed_items %>
+	<%= render 'shared/feed' %>
+	<% end %>
+</p>
+<%end%>

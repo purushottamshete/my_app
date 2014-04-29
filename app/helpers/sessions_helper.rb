@@ -29,6 +29,14 @@ module SessionsHelper
     user == current_user
   end
 
+  def current_city
+	current_user.detail.city.name
+  end
+
+  def have_a_car?
+	current_user.have_a_car  #TODO remove have_a_car from detail to user
+  end
+
   def signed_in_user
     unless signed_in?
       store_location

@@ -9,10 +9,15 @@
       <nav>
 
         <ul class="nav pull-right">
-	  <% if signed_in? %> <li><%= "Welcome #{current_user.name}"%></li> <% end %> 
+	  <% if signed_in? %> 
+	  <li><%= link_to "Welcome #{current_user.fname}", current_user%></li>
+          <li><%= link_to "Search for Lift", 'searchg' %></li>
+		<% if have_a_car? %>
+			<li><%= link_to "Share my Ride",  'create' %></li>
+		<% end %>
+	  <% end %> 
 
           <li><%= link_to "Home",    '/' %></li>
-
           <li><%= link_to "Help",    'help' %></li>
 
 	 <% if signed_in? %>
@@ -22,21 +27,13 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account <b class="caret"></b></a>
 
               <ul class="dropdown-menu">
-
                 <li><%= link_to "Profile", current_user %></li>
-
-                <li><%= link_to "Settings", '#' %></li>
-
+                <li><%= link_to "Travel Histroy", '#' %></li>
                 <li class="divider"></li>
-
                 <li>
-
                   <%= link_to "Sign out", signout_path, method: "delete" %>
-
                 </li>
-
               </ul>
-
             </li>
 
           <% else %>
